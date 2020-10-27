@@ -12,7 +12,7 @@ nativename="${native##*/}"
 nativename_noext="${nativename%.*.*.*}"
 pdb_tidy $file | pdb_keepcoord | pdb_delhetatm | pdb_tidy > ${filename_noext}.dockq.pdb
 outfile=${filename_noext}.${nativename_noext}.dockq.out
-$DOCKQ_HOME/DockQ.py ${filename_noext}.dockq.pdb $native > $outfile
+$DOCKQ_HOME/DockQ.py ${filename_noext}.dockq.pdb $native 1> $outfile 2>/dev/null
 if [[ $? > 0 ]]; then
     echo "Warning: dockq failed for $file (native: $native). skipping." >&2
     rm $outfile ${filename_noext}.dockq.pdb

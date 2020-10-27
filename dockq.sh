@@ -1,6 +1,6 @@
 #!/bin/bash
-CORES=10
-__DIR__="$(dirname $(readlink -f "$0"))"
+CORES=4
+__DIR__="$(dirname "$(readlink -f "$0")")"
 DOCKQ_HOME="$__DIR__"
 LINE="$__DIR__/dockqline.sh"
 
@@ -34,7 +34,7 @@ fi
 
 set -m
 if [[ -f $native ]]; then
-    format="%-17s %-17s %-10s %-10s %-10s %-10s %-10s %-10s %-10s %-10s %-10s %-10s \n"
+    format="%-17s %-17s %-10s %-10s %-7s %-4s %-4s %-6s %-6s %-6s %-8s %-8s \n"
     printf "$format" "decoy" "native" "chain(1)" "chain(2)" "fnat" "natc" "corc" "irmsd" "lrmsd" "CAPRI" "DockQ" "DockQScore"
     nativename="${native##*/}"
     nativename_noext="${nativename%.*}"
